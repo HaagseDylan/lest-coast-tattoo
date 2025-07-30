@@ -1,17 +1,27 @@
-[
+  [
     {
       "type": "image",
-      "src": "media/preview.jpg",
-      "alt": "CCool tattoo!"
+      "src": "media/tattoo1.jpg",
+      "alt": "Classic Rose Tattoo"
     },
     {
-      "type": "video",
-      "src": "media/preview1.mp4",
-      "poster": "media/tattoo1.jpg"
+      "type": "image",
+      "src": "media/tattoo2.jpg",
+      "alt": "Anchor Tattoo Design"
     },
     {
-      "type": "video",
-      "src": "media/preview2.mp4",
-      "poster": "media/tattoo2.jpg"
+        "type": "image",
+        "src": "media/preview.jpg",
+        "alt": "CCool tattoo!"
+    },
+    {
+        "type": "video",
+        "src": "media/preview1.mp4",
+        "poster": "media/tattoo1.jpg"
+    },
+    {
+        "type": "video",
+        "src": "media/preview2.mp4",
+        "poster": "media/tattoo2.jpg"
     }
-  ]
+]

@@ -1,44 +1,45 @@
 body {
     margin: 0;
     font-family: 'Rockwell', serif;
-    background: url('assets/texture-ink.png') repeat;
+    background: url('assets/ink-texture.png') repeat;
     color: #000;
+    background-color: #f5e8c7; /* Parchment base */
     overflow-x: hidden;
 }
 
-header.shop-sign, footer.shop-sign {
-    background: url('assets/vintage-flash-bg.jpg') no-repeat center center/cover;
-    padding: 20px;
+header.neon-sign, footer.neon-sign {
+    background: url('assets/flash-bg.jpg') no-repeat center center/cover;
+    padding: 25px;
     text-align: center;
-    border: 10px double #ff0000;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    border: 12px double #ff0000;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
     position: relative;
     overflow: hidden;
 }
 
-header.shop-sign::before, footer.shop-sign::before {
+header.neon-sign::before, footer.neon-sign::before {
     content: '';
     position: absolute;
-    top: -5px; left: -5px; right: -5px; bottom: -5px;
+    top: -10px; left: -10px; right: -10px; bottom: -10px;
     background: linear-gradient(45deg, #ff0000, #ffd700);
     z-index: -1;
-    opacity: 0.2;
-    animation: ink-drip 5s infinite;
+    opacity: 0.3;
+    animation: neon-flicker 4s infinite;
 }
 
-@keyframes ink-drip {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); opacity: 0.3; }
-    100% { transform: scale(1); }
+@keyframes neon-flicker {
+    0% { opacity: 0.3; }
+    50% { opacity: 0.5; }
+    100% { opacity: 0.3; }
 }
 
 .logo h1 {
     font-family: 'Amatic SC', cursive;
-    font-size: 4em;
+    font-size: 4.5em;
     margin: 0;
-    text-shadow: 3px 3px #ff0000, 0 0 15px #ffd700;
-    letter-spacing: 5px;
     color: #fff;
+    text-shadow: 4px 4px #000, 0 0 20px #ffd700;
+    letter-spacing: 6px;
 }
 
 nav {
@@ -46,9 +47,10 @@ nav {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 10px;
-    border: 5px solid #ff0000;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 15px;
+    border: 6px double #ff0000;
+    margin-top: 20px;
 }
 
 nav ul {
@@ -58,46 +60,46 @@ nav ul {
 }
 
 nav ul li {
-    margin: 0 20px;
+    margin: 0 25px;
 }
 
 nav ul li a {
     color: #fff;
     text-decoration: none;
     font-family: 'Rockwell', serif;
-    font-size: 1.2em;
+    font-size: 1.3em;
     text-transform: uppercase;
     transition: color 0.3s, text-shadow 0.3s;
 }
 
 nav ul li a:hover {
     color: #ffd700;
-    text-shadow: 0 0 10px #ffd700;
+    text-shadow: 0 0 15px #ffd700;
 }
 
 .social-links img {
-    width: 40px;
-    margin: 0 15px;
-    transition: transform 0.3s;
+    width: 45px;
+    margin: 0 20px;
+    transition: transform 0.3s, filter 0.3s;
 }
 
 .social-links img:hover {
-    transform: rotate(20deg) scale(1.3);
-    filter: drop-shadow(0 0 5px #ffd700);
+    transform: rotate(25deg) scale(1.4);
+    filter: drop-shadow(0 0 8px #ffd700);
 }
 
 .language-switcher {
-    margin: 10px;
+    margin: 15px;
 }
 
 .language-switcher select {
-    padding: 8px 15px;
+    padding: 10px 20px;
     font-family: 'Amatic SC', cursive;
-    font-size: 1.3em;
-    background: url('assets/texture-ink.png');
+    font-size: 1.4em;
+    background: #f5e8c7;
     color: #ff0000;
-    border: 4px double #000;
-    border-radius: 0;
+    border: 6px double #000;
+    border-radius: 5px;
     cursor: pointer;
     transition: color 0.3s, border-color 0.3s;
 }
@@ -107,71 +109,71 @@ nav ul li a:hover {
     border-color: #ffd700;
 }
 
-.flash-sheet {
-    margin: 20px auto;
-    padding: 30px;
-    border: 10px double #000;
-    background: url('assets/vintage-flash-bg.jpg') no-repeat center center/cover;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+.flash-page {
+    margin: 30px auto;
+    padding: 40px;
+    border: 12px double #000;
+    background: rgba(245, 232, 199, 0.9);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     position: relative;
-    animation: page-turn 1s ease-out;
+    animation: page-flip 1s ease-out;
 }
 
-@keyframes page-turn {
-    from { transform: rotateY(90deg); opacity: 0; }
-    to { transform: rotateY(0); opacity: 1; }
+@keyframes page-flip {
+    from { transform: perspective(1000px) rotateY(90deg); opacity: 0; }
+    to { transform: perspective(1000px) rotateY(0); opacity: 1; }
 }
 
-.flash-sheet h2 {
+.flash-page h2 {
     font-family: 'Amatic SC', cursive;
-    font-size: 3em;
+    font-size: 3.5em;
     text-align: center;
     color: #ff0000;
-    text-shadow: 2px 2px #000, 0 0 10px #ffd700;
-    margin-bottom: 20px;
+    text-shadow: 3px 3px #000, 0 0 15px #ffd700;
+    margin-bottom: 25px;
 }
 
 .hero {
     text-align: center;
-    color: #fff;
-    padding: 50px;
+    color: #000;
+    padding: 60px 20px;
 }
 
 .hero h2 {
-    font-size: 4em;
-    text-shadow: 3px 3px #000, 0 0 20px #ff0000;
+    font-size: 4.5em;
+    text-shadow: 3px 3px #ff0000, 0 0 25px #ffd700;
 }
 
 .cta-button {
     display: inline-block;
-    padding: 15px 30px;
+    padding: 20px 40px;
     background: #ff0000;
     color: #fff;
     text-decoration: none;
-    border: 5px double #000;
+    border: 6px double #000;
     font-family: 'Amatic SC', cursive;
-    font-size: 1.5em;
+    font-size: 1.6em;
     text-shadow: 2px 2px #000;
     transition: background 0.3s, transform 0.3s;
 }
 
 .cta-button:hover {
     background: #ffd700;
-    transform: scale(1.1);
+    transform: scale(1.15);
 }
 
 .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 20px;
+    gap: 25px;
+    padding: 25px;
 }
 
 .gallery-item {
     position: relative;
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.5s, transform 0.5s;
+    transform: translateY(40px);
+    transition: opacity 0.6s, transform 0.6s;
 }
 
 .gallery-item.visible {
@@ -186,61 +188,64 @@ nav ul li a:hover {
 .gallery-item img,
 .gallery-item video {
     width: 100%;
-    border: 8px double #000;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
-    filter: sepia(0.3) contrast(1.2);
-    transition: transform 0.3s, box-shadow 0.3s;
+    border: 10px double #000;
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+    filter: sepia(0.4) contrast(1.3);
+    transition: transform 0.4s, box-shadow 0.4s;
 }
 
 .gallery-item:hover img,
 .gallery-item:hover video {
-    transform: scale(1.1);
-    box-shadow: 0 0 25px #ffd700;
+    transform: scale(1.15);
+    box-shadow: 0 0 30px #ffd700;
 }
 
 .gallery-item video {
-    max-height: 300px;
+    max-height: 320px;
 }
 
 #about p, #contact form {
     font-family: 'Rockwell', serif;
-    font-size: 1.1em;
+    font-size: 1.2em;
     color: #333;
-    line-height: 1.6;
+    line-height: 1.7;
+    text-shadow: 1px 1px #fff;
 }
 
 #contact input, #contact textarea {
-    padding: 10px;
-    border: 4px double #000;
-    background: rgba(255, 255, 255, 0.8);
+    padding: 12px;
+    border: 6px double #000;
+    background: rgba(255, 255, 255, 0.7);
     font-family: 'Rockwell', serif;
+    font-size: 1.1em;
 }
 
 #contact button {
-    padding: 15px;
+    padding: 15px 30px;
     background: #ff0000;
     color: #fff;
-    border: 4px double #000;
+    border: 6px double #000;
     font-family: 'Amatic SC', cursive;
-    font-size: 1.3em;
+    font-size: 1.4em;
     transition: background 0.3s, transform 0.3s;
 }
 
 #contact button:hover {
     background: #ffd700;
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
-footer.shop-sign p {
+footer.neon-sign p {
     font-family: 'Rockwell', serif;
-    font-size: 1em;
+    font-size: 1.1em;
     color: #fff;
+    text-shadow: 2px 2px #000;
 }
 
 @media (max-width: 768px) {
     .logo h1 {
-        font-size: 2.5em;
+        font-size: 2.8em;
     }
 
     nav {
@@ -248,23 +253,23 @@ footer.shop-sign p {
     }
 
     nav ul li {
-        margin: 10px 0;
+        margin: 15px 0;
     }
 
-    .flash-sheet {
-        margin: 10px;
-        padding: 20px;
+    .flash-page {
+        margin: 15px;
+        padding: 25px;
     }
 
     .hero h2 {
-        font-size: 2.5em;
+        font-size: 2.8em;
     }
 
     .gallery-item video {
-        max-height: 200px;
+        max-height: 220px;
     }
 
     .cta-button {
-        font-size: 1.2em;
+        font-size: 1.3em;
     }
 }

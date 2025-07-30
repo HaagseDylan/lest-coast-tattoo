@@ -64,7 +64,7 @@ async function loadPortfolio() {
         });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.gallery-item, .flash-sheet').forEach(item => {
+    document.querySelectorAll('.gallery-item, .flash-page').forEach(item => {
         observer.observe(item);
     });
 }
