@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate="title">Lest Coast Tattoo Studio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Roboto:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1 data-translate="title">Lest Coast Tattoo Studio</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home" data-translate="home">Home</a></li>
+                <li><a href="#portfolio" data-translate="portfolio">Portfolio</a></li>
+                <li><a href="#about" data-translate="about">Over</a></li>
+                <li><a href="#contact" data-translate="contact">Contact</a></li>
+            </ul>
+            <div class="social-links">
+                <a href="https://instagram.com/lestcoasttattoostudio" target="_blank"><img src="assets/instagram-icon.png" alt="Instagram"></a>
+                <a href="https://tiktok.com/@lestcoasttattoostudio" target="_blank"><img src="assets/tiktok-icon.png" alt="TikTok"></a>
+            </div>
+            <div class="language-switcher">
+                <select id="language-select">
+                    <option value="nl">Nederlands</option>
+                    <option value="en">English</option>
+                    <option value="pt">Português</option>
+                </select>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home">
+        <div class="hero">
+            <h2 data-translate="hero_title">Old School Ink, Lest Coast Stijl</h2>
+            <p data-translate="hero_text">Ontdek de kunst van klassieke tattoos bij Lest Coast Tattoo Studio.</p>
+            <a href="#portfolio" class="cta-button" data-translate="cta_button">Bekijk Portfolio</a>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <h2 data-translate="portfolio_title">Portfolio</h2>
+        <div class="gallery" id="portfolio-gallery"></div>
+    </section>
+
+    <section id="about">
+        <h2 data-translate="about_title">Over Lest Coast</h2>
+        <p data-translate="about_text">Maak kennis met [Naam Artiest], de drijvende kracht achter Lest Coast Tattoo Studio. Met een passie voor old-school designs en jarenlange ervaring brengen we klassieke kunst tot leven met een unieke twist.</p>
+    </section>
+
+    <section id="contact">
+        <h2 data-translate="contact_title">Contact</h2>
+        <form id="contact-form">
+            <label for="name" data-translate="contact_name">Naam:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email" data-translate="contact_email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message" data-translate="contact_message">Bericht:</label>
+            <textarea id="message" name="message" required></textarea>
+            <button type="submit" data-translate="contact_submit">Verstuur</button>
+        </form>
+    </section>
+
+    <footer>
+        <p data-translate="footer">&copy; 2025 Lest Coast Tattoo Studio. Alle rechten voorbehouden.</p>
+        <div class="social-links">
+            <a href="https://instagram.com/lestcoasttattoostudio" target="_blank"><img src="assets/instagram-icon.png" alt="Instagram"></a>
+            <a href="https://tiktok.com/@lestcoasttattoostudio" target="_blank"><img src="assets/tiktok-icon.png" alt="TikTok"></a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

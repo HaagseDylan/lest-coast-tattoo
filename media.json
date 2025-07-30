@@ -1,0 +1,17 @@
+[
+    {
+      "type": "image",
+      "src": "media/preview.jpg",
+      "alt": "CCool tattoo!"
+    },
+    {
+      "type": "video",
+      "src": "media/preview1.mp4",
+      "poster": "media/tattoo1.jpg"
+    },
+    {
+      "type": "video",
+      "src": "media/preview2.mp4",
+      "poster": "media/tattoo2.jpg"
+    }
+  ]
