@@ -55,7 +55,7 @@ async function loadPortfolio() {
         autoplayVideos: false
     });
 
-    // Trigger fade-in animations on scroll
+    // Trigger animations on scroll
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -64,7 +64,7 @@ async function loadPortfolio() {
         });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.gallery-item').forEach(item => {
+    document.querySelectorAll('.gallery-item, .flash-sheet').forEach(item => {
         observer.observe(item);
     });
 }
@@ -75,16 +75,6 @@ async function setLanguage(lang) {
     applyTranslations(translations, lang);
     localStorage.setItem('preferredLanguage', lang);
     document.getElementById('language-select').value = lang;
-}
-
-// Sticky navigation on scroll
-function handleScroll() {
-    const header = document.querySelector('header');
-    if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
 }
 
 // Laad de opgeslagen taal en portfolio bij het laden van de pagina
@@ -104,7 +94,4 @@ document.addEventListener('DOMContentLoaded', async () => {
         alert(translations[lang].form_success);
         e.target.reset();
     });
-
-    // Add scroll event listener
-    window.addEventListener('scroll', handleScroll);
 });

@@ -1,33 +1,44 @@
 body {
     margin: 0;
-    font-family: 'Roboto', sans-serif;
-    background: url('assets/texture-bg.png') repeat; /* Subtle grunge texture */
-    color: #333;
+    font-family: 'Rockwell', serif;
+    background: url('assets/texture-ink.png') repeat;
+    color: #000;
     overflow-x: hidden;
 }
 
-header {
-    background-color: rgba(26, 26, 26, 0.95);
-    color: #fff;
+header.shop-sign, footer.shop-sign {
+    background: url('assets/vintage-flash-bg.jpg') no-repeat center center/cover;
     padding: 20px;
     text-align: center;
-    border-bottom: 5px solid #ff0000;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    transition: background-color 0.3s;
+    border: 10px double #ff0000;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
 }
 
-header.scrolled {
-    background-color: rgba(26, 26, 26, 1);
+header.shop-sign::before, footer.shop-sign::before {
+    content: '';
+    position: absolute;
+    top: -5px; left: -5px; right: -5px; bottom: -5px;
+    background: linear-gradient(45deg, #ff0000, #ffd700);
+    z-index: -1;
+    opacity: 0.2;
+    animation: ink-drip 5s infinite;
+}
+
+@keyframes ink-drip {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); opacity: 0.3; }
+    100% { transform: scale(1); }
 }
 
 .logo h1 {
     font-family: 'Amatic SC', cursive;
-    font-size: 3em;
+    font-size: 4em;
     margin: 0;
-    text-shadow: 2px 2px #ff0000, 0 0 10px #ff0000; /* Neon glow */
-    letter-spacing: 2px;
+    text-shadow: 3px 3px #ff0000, 0 0 15px #ffd700;
+    letter-spacing: 5px;
+    color: #fff;
 }
 
 nav {
@@ -35,6 +46,9 @@ nav {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border: 5px solid #ff0000;
 }
 
 nav ul {
@@ -44,28 +58,32 @@ nav ul {
 }
 
 nav ul li {
-    margin: 0 15px;
+    margin: 0 20px;
 }
 
 nav ul li a {
     color: #fff;
     text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s;
+    font-family: 'Rockwell', serif;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    transition: color 0.3s, text-shadow 0.3s;
 }
 
 nav ul li a:hover {
-    color: #ffd700; /* Gold accent */
+    color: #ffd700;
+    text-shadow: 0 0 10px #ffd700;
 }
 
 .social-links img {
-    width: 30px;
-    margin: 0 10px;
+    width: 40px;
+    margin: 0 15px;
     transition: transform 0.3s;
 }
 
 .social-links img:hover {
-    transform: rotate(15deg) scale(1.2);
+    transform: rotate(20deg) scale(1.3);
+    filter: drop-shadow(0 0 5px #ffd700);
 }
 
 .language-switcher {
@@ -73,92 +91,86 @@ nav ul li a:hover {
 }
 
 .language-switcher select {
-    padding: 5px 10px;
+    padding: 8px 15px;
     font-family: 'Amatic SC', cursive;
-    font-size: 1.2em;
-    background-color: #ff0000;
-    color: #fff;
-    border: 2px solid #1a1a1a;
-    border-radius: 5px;
+    font-size: 1.3em;
+    background: url('assets/texture-ink.png');
+    color: #ff0000;
+    border: 4px double #000;
+    border-radius: 0;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: color 0.3s, border-color 0.3s;
 }
 
 .language-switcher select:hover {
-    background-color: #cc0000;
+    color: #ffd700;
+    border-color: #ffd700;
+}
+
+.flash-sheet {
+    margin: 20px auto;
+    padding: 30px;
+    border: 10px double #000;
+    background: url('assets/vintage-flash-bg.jpg') no-repeat center center/cover;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+    position: relative;
+    animation: page-turn 1s ease-out;
+}
+
+@keyframes page-turn {
+    from { transform: rotateY(90deg); opacity: 0; }
+    to { transform: rotateY(0); opacity: 1; }
+}
+
+.flash-sheet h2 {
+    font-family: 'Amatic SC', cursive;
+    font-size: 3em;
+    text-align: center;
+    color: #ff0000;
+    text-shadow: 2px 2px #000, 0 0 10px #ffd700;
+    margin-bottom: 20px;
 }
 
 .hero {
-    position: relative;
-    background: url('assets/vintage-bg.jpg') no-repeat center center/cover;
-    background-attachment: fixed; /* Parallax effect */
-    padding: 100px 20px;
     text-align: center;
     color: #fff;
-    overflow: hidden;
-}
-
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Overlay for readability */
-    z-index: 1;
-}
-
-.hero h2, .hero p, .hero a {
-    position: relative;
-    z-index: 2;
+    padding: 50px;
 }
 
 .hero h2 {
-    font-family: 'Amatic SC', cursive;
-    font-size: 3.5em;
-    text-shadow: 0 0 15px #ff0000, 2px 2px #000;
-    animation: neon-glow 2s infinite alternate;
-}
-
-@keyframes neon-glow {
-    from { text-shadow: 0 0 10px #ff0000, 2px 2px #000; }
-    to { text-shadow: 0 0 20px #ff0000, 2px 2px #000; }
+    font-size: 4em;
+    text-shadow: 3px 3px #000, 0 0 20px #ff0000;
 }
 
 .cta-button {
     display: inline-block;
-    padding: 10px 20px;
-    background-color: #ff0000;
+    padding: 15px 30px;
+    background: #ff0000;
     color: #fff;
     text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    border: 2px solid #1a1a1a;
-    transition: background-color 0.3s, transform 0.3s;
+    border: 5px double #000;
+    font-family: 'Amatic SC', cursive;
+    font-size: 1.5em;
+    text-shadow: 2px 2px #000;
+    transition: background 0.3s, transform 0.3s;
 }
 
 .cta-button:hover {
-    background-color: #cc0000;
+    background: #ffd700;
     transform: scale(1.1);
-}
-
-#portfolio {
-    padding: 50px 20px;
-    text-align: center;
-    background: rgba(255, 255, 255, 0.9); /* Semi-transparent for contrast */
 }
 
 .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
+    padding: 20px;
 }
 
 .gallery-item {
     position: relative;
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
     transition: opacity 0.5s, transform 0.5s;
 }
 
@@ -167,86 +179,81 @@ nav ul li a:hover {
     transform: translateY(0);
 }
 
+.gallery-item a.glightbox {
+    display: block;
+}
+
 .gallery-item img,
 .gallery-item video {
     width: 100%;
-    border: 5px solid #1a1a1a;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    object-fit: cover;
+    border: 8px double #000;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+    filter: sepia(0.3) contrast(1.2);
     transition: transform 0.3s, box-shadow 0.3s;
-    filter: contrast(1.1); /* Vintage effect */
 }
 
 .gallery-item:hover img,
 .gallery-item:hover video {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px #ffd700; /* Gold glow */
+    transform: scale(1.1);
+    box-shadow: 0 0 25px #ffd700;
 }
 
 .gallery-item video {
     max-height: 300px;
 }
 
-#about, #contact {
-    padding: 50px 20px;
-    text-align: center;
-    background: rgba(255, 255, 255, 0.9);
-}
-
-#contact form {
-    max-width: 600px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+#about p, #contact form {
+    font-family: 'Rockwell', serif;
+    font-size: 1.1em;
+    color: #333;
+    line-height: 1.6;
 }
 
 #contact input, #contact textarea {
     padding: 10px;
-    border: 2px solid #1a1a1a;
-    border-radius: 5px;
-    font-family: 'Roboto', sans-serif;
+    border: 4px double #000;
+    background: rgba(255, 255, 255, 0.8);
+    font-family: 'Rockwell', serif;
 }
 
 #contact button {
-    padding: 10px;
-    background-color: #ff0000;
+    padding: 15px;
+    background: #ff0000;
     color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    border: 4px double #000;
     font-family: 'Amatic SC', cursive;
-    font-size: 1.2em;
-    transition: background-color 0.3s, transform 0.3s;
+    font-size: 1.3em;
+    transition: background 0.3s, transform 0.3s;
 }
 
 #contact button:hover {
-    background-color: #cc0000;
+    background: #ffd700;
     transform: scale(1.05);
 }
 
-footer {
-    background-color: #1a1a1a;
+footer.shop-sign p {
+    font-family: 'Rockwell', serif;
+    font-size: 1em;
     color: #fff;
-    text-align: center;
-    padding: 20px;
-    border-top: 5px solid #ff0000;
 }
 
 @media (max-width: 768px) {
+    .logo h1 {
+        font-size: 2.5em;
+    }
+
     nav {
         flex-direction: column;
     }
 
     nav ul li {
-        display: block;
         margin: 10px 0;
     }
 
-    .hero {
-        padding: 50px 20px;
-        background-attachment: scroll; /* Disable parallax on mobile */
+    .flash-sheet {
+        margin: 10px;
+        padding: 20px;
     }
 
     .hero h2 {
@@ -255,5 +262,9 @@ footer {
 
     .gallery-item video {
         max-height: 200px;
+    }
+
+    .cta-button {
+        font-size: 1.2em;
     }
 }
