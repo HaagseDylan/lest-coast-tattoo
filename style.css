@@ -1,23 +1,33 @@
 body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
-    background-color: #f4f4f4;
+    background: url('assets/texture-bg.png') repeat; /* Subtle grunge texture */
     color: #333;
+    overflow-x: hidden;
 }
 
 header {
-    background-color: #1a1a1a;
+    background-color: rgba(26, 26, 26, 0.95);
     color: #fff;
     padding: 20px;
     text-align: center;
     border-bottom: 5px solid #ff0000;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.3s;
+}
+
+header.scrolled {
+    background-color: rgba(26, 26, 26, 1);
 }
 
 .logo h1 {
     font-family: 'Amatic SC', cursive;
     font-size: 3em;
     margin: 0;
-    text-shadow: 2px 2px #ff0000;
+    text-shadow: 2px 2px #ff0000, 0 0 10px #ff0000; /* Neon glow */
+    letter-spacing: 2px;
 }
 
 nav {
@@ -41,15 +51,21 @@ nav ul li a {
     color: #fff;
     text-decoration: none;
     font-weight: bold;
+    transition: color 0.3s;
 }
 
 nav ul li a:hover {
-    color: #ff0000;
+    color: #ffd700; /* Gold accent */
 }
 
 .social-links img {
     width: 30px;
     margin: 0 10px;
+    transition: transform 0.3s;
+}
+
+.social-links img:hover {
+    transform: rotate(15deg) scale(1.2);
 }
 
 .language-switcher {
@@ -57,13 +73,15 @@ nav ul li a:hover {
 }
 
 .language-switcher select {
-    padding: 5px;
-    font-family: 'Roboto', sans-serif;
+    padding: 5px 10px;
+    font-family: 'Amatic SC', cursive;
+    font-size: 1.2em;
     background-color: #ff0000;
     color: #fff;
-    border: none;
+    border: 2px solid #1a1a1a;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .language-switcher select:hover {
@@ -71,16 +89,41 @@ nav ul li a:hover {
 }
 
 .hero {
+    position: relative;
     background: url('assets/vintage-bg.jpg') no-repeat center center/cover;
+    background-attachment: fixed; /* Parallax effect */
     padding: 100px 20px;
     text-align: center;
     color: #fff;
-    text-shadow: 2px 2px #000;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Overlay for readability */
+    z-index: 1;
+}
+
+.hero h2, .hero p, .hero a {
+    position: relative;
+    z-index: 2;
 }
 
 .hero h2 {
     font-family: 'Amatic SC', cursive;
     font-size: 3.5em;
+    text-shadow: 0 0 15px #ff0000, 2px 2px #000;
+    animation: neon-glow 2s infinite alternate;
+}
+
+@keyframes neon-glow {
+    from { text-shadow: 0 0 10px #ff0000, 2px 2px #000; }
+    to { text-shadow: 0 0 20px #ff0000, 2px 2px #000; }
 }
 
 .cta-button {
@@ -91,15 +134,19 @@ nav ul li a:hover {
     text-decoration: none;
     border-radius: 5px;
     font-weight: bold;
+    border: 2px solid #1a1a1a;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 .cta-button:hover {
     background-color: #cc0000;
+    transform: scale(1.1);
 }
 
 #portfolio {
     padding: 50px 20px;
     text-align: center;
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent for contrast */
 }
 
 .gallery {
@@ -110,6 +157,14 @@ nav ul li a:hover {
 
 .gallery-item {
     position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.gallery-item.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .gallery-item img,
@@ -119,15 +174,24 @@ nav ul li a:hover {
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
     object-fit: cover;
+    transition: transform 0.3s, box-shadow 0.3s;
+    filter: contrast(1.1); /* Vintage effect */
+}
+
+.gallery-item:hover img,
+.gallery-item:hover video {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #ffd700; /* Gold glow */
 }
 
 .gallery-item video {
-    max-height: 300px; /* Beperk hoogte voor consistentie */
+    max-height: 300px;
 }
 
 #about, #contact {
     padding: 50px 20px;
     text-align: center;
+    background: rgba(255, 255, 255, 0.9);
 }
 
 #contact form {
@@ -142,6 +206,7 @@ nav ul li a:hover {
     padding: 10px;
     border: 2px solid #1a1a1a;
     border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
 }
 
 #contact button {
@@ -151,10 +216,14 @@ nav ul li a:hover {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-family: 'Amatic SC', cursive;
+    font-size: 1.2em;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 #contact button:hover {
     background-color: #cc0000;
+    transform: scale(1.05);
 }
 
 footer {
@@ -177,9 +246,14 @@ footer {
 
     .hero {
         padding: 50px 20px;
+        background-attachment: scroll; /* Disable parallax on mobile */
+    }
+
+    .hero h2 {
+        font-size: 2.5em;
     }
 
     .gallery-item video {
-        max-height: 200px; /* Kleinere hoogte op mobiel */
+        max-height: 200px;
     }
 }
